@@ -1,0 +1,32 @@
+body {
+  font-size: 200%;
+  padding: 3em;
+}
+button {
+  font-size: 100%;
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+button.close {
+  float: right;
+  font-size: 200%;
+  border-width: 0;
+  background-color: rgba(255, 255, 255, 255);
+  margin: 0;
+  padding: 0;
+}
+
+button.close::before {
+  content: "❎"
+}
+
+li {
+  margin: 0.5em 0;
+}
+
+.item-title  {
+  text-transform: capitalize;
+}

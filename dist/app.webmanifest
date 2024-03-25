@@ -1,0 +1,6 @@
+{
+  "name"      : "Qworum application template",
+  "short_name": "App template",
+  "start_url" : "/",
+  "display"   : "standalone"
+}
