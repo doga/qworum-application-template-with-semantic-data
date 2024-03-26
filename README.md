@@ -14,13 +14,13 @@ This template is:
 This website implements a Qworum API that has 2 endpoints:
 
 - the `home` endpoint, which is an application, and
-- the `view-item` endpoint, called by `home`.
+- the `view-product` endpoint, called by `home`.
 
 Here is the directory structure:
 
 - Directories with 2-letter names such as `en` contain language-specific versions of the API endpoints.
 - `assets` contains resources used by the web pages.
-- All other directories (`home`, `view-item`) are the official endpoint paths; they are only used for redirecting API calls to language-specific endpoint versions.
+- All other directories (`home`, `view-product`) are the official endpoint paths; they are only used for redirecting API calls to language-specific endpoint versions.
 
 Note that the API endpoint names mustn't be:
 
