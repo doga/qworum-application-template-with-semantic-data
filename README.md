@@ -2,7 +2,7 @@
 
 # Basic template for Qworum-based web applications
 
-This is a template for a multi-language website that uses [Qworum](https://qworum.net)'s advanced web browser capabilities.
+This is a template for a website that uses [Qworum](https://qworum.net)'s advanced web browser capabilities.
 
 This template is:
 
