@@ -8,6 +8,9 @@ This template is:
 
 - _Multi-language_, with language-independent API endpoint paths.
 - _Versioned_. Indeed, Qworum applications are structured as Qworum APIs, and versioned APIs ensure that other applications that depend on this one will not break after an update.
+- _Semantic_, meaning that it uses [RDF](https://www.w3.org/TR/rdf-primer/) for representing data.
+
+This project has a [companion project](https://github.com/doga/qworum-application-template) that uses plain JSON data instead of RDF.
 
 ## The "Hello World" Qworum application
 
