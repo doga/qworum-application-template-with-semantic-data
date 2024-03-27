@@ -27,12 +27,12 @@ interface:v1
     :parameter [
       :comment 'The identifier of the product to display.'@en;
       :name 'Product info';
-      :shape '/qworum/data-validation/shapes/product.shacl.ttl'^^:anyIRI
+      :shape 'https://qworum.net/qworum/data-validation/shapes/one-product.shacl.ttl'^^:anyIRI
     ];
 
     :returns [
       :comment 'Returns the call parameter.'@en;
-      :shape '/qworum/data-validation/shapes/product.shacl.ttl'^^:anyIRI
+      :shape 'https://qworum.net/qworum/data-validation/shapes/one-product.shacl.ttl'^^:anyIRI
     ]
   ].
 
