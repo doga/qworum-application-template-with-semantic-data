@@ -1,0 +1,38 @@
+# metadata
+PREFIX foaf:    <http://xmlns.com/foaf/0.1/> 
+PREFIX cc:      <http://creativecommons.org/ns#> 
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+# interface
+PREFIX : <http://ontology.qworum.net/i/>
+PREFIX interface: <#> 
+
+:metadata {
+  <app.trig>
+    a foaf:Document;
+    dcterms:description 'A Qworum interface description.'@en;
+    foaf:maker <https://qworum.net/data/DoğaArmangil.ttl#id>;
+    cc:license <https://creativecommons.org/publicdomain/zero/1.0/>.
+}
+
+interface:v1
+  a :Interface;
+  :extends <https://qworum.net/qworum/interfaces/base.trig#v1>;
+  :comment 'The interface of this Qworum application.'@en;
+
+  :method [
+    :comment 'Endpoint for viewing a product.'@en;
+    :path 'view-product/'^^:methodPath;
+
+    :parameter [
+      :comment 'The identifier of the product to display.'@en;
+      :name 'Product info';
+      :shape '/qworum/data-validation/shapes/product.shacl.ttl'^^:anyIRI
+    ];
+
+    :returns [
+      :comment 'Returns the call parameter.'@en;
+      :shape '/qworum/data-validation/shapes/product.shacl.ttl'^^:anyIRI
+    ]
+  ].
+
