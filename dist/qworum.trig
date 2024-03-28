@@ -1,3 +1,6 @@
+# TECHNOLOGY PREVIEW.
+# API DESCRIPTIONS ARE NOT YET USED IN PRODUCTION BY THE QWORUM PLATFORM.
+
 BASE <https://basic.template.qworum.net/qworum.trig>
 
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/> 

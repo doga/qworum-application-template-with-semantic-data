@@ -1,3 +1,6 @@
+# TECHNOLOGY PREVIEW.
+# API DESCRIPTIONS ARE NOT YET USED IN PRODUCTION BY THE QWORUM PLATFORM.
+
 # metadata
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/> 
 PREFIX cc:      <http://creativecommons.org/ns#> 
