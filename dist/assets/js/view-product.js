@@ -56,7 +56,7 @@ async function showItem() {
     break;
   }
   for (const productDescription of product.descriptions) {
-    details.innerText = productDescription.str; 
+    details.innerText = productDescription.value; 
     break;
   }
 

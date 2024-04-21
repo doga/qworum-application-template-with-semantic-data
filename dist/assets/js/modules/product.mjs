@@ -123,7 +123,7 @@ class Product extends Model {
           id, pName, 
           typeof name === 'string' ?
             df.literal(name) :
-            df.literal(name.str, name.lang)
+            df.literal(name.value, name.language)
         );
         dataset.add(q);
       }
