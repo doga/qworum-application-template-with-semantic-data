@@ -39,13 +39,15 @@ async function showItems() {
     
     
     const
-    productNames = await productModel.getNames();
-    li           = document.createElement('li'),
-    button       = document.createElement('button');
+    product = {
+      names: await productModel.getNames(),
+    },
+    li     = document.createElement('li'),
+    button = document.createElement('button');
 
-    for (const productName of productNames) {
+    for (const productName of product.names) {
       button.className = 'product-title';
-      button.innerText = productModel.title;
+      button.innerText = productName;
       li.appendChild(button);
       contentArea.appendChild(li);
       break;

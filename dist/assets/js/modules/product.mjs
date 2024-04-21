@@ -65,9 +65,13 @@ class Product extends Model {
     return super._getStrings(pName);
   }
 
+  // TODO async getName()
+
   async getDescriptions() {
     return super._getLangStrings(pDescription);
   }
+
+  // TODO async getDescription()
 
   async getOffers() {
     try {
@@ -137,3 +141,5 @@ class Product extends Model {
   }
 
 }
+
+export { Product };
