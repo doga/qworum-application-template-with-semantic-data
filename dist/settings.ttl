@@ -1,0 +1,7 @@
+PREFIX : <#>
+PREFIX schema: <https://schema.org/>
+
+:application
+  a schema:WebApplication;
+  schema:softwareVersion '1';
+  schema:inLanguage 'en'.

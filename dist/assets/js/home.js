@@ -1,4 +1,4 @@
-import { Product } from "./modules/product.mjs"; 
+import { Product } from "./models/product.mjs"; 
 import { QworumScript, Qworum } from './deps.mjs';
 
 const

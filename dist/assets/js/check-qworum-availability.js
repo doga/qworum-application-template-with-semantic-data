@@ -2,6 +2,7 @@
 // Used by check-qworum-availability-LANG.html.
 
 import { QworumScript, Qworum } from './deps.mjs';
+import { Settings } from './models/settings.mjs';
 
 const
 // Data values
@@ -16,30 +17,30 @@ Call     = QworumScript.Call.build,
 Fault    = QworumScript.Fault.build,
 Try      = QworumScript.Try.build,
 // Script
-Script = QworumScript.Script.build,
-
-siteVersion = new URLSearchParams(document.location.search).get('version');
-
-console.log(`[Qworum availability checker] Site version: ${siteVersion}`);
-// console.log(`[Qworum availability checker] Qworum.checkAvailability: ${Qworum.checkAvailability}`);
+Script = QworumScript.Script.build;
 
 checkQworumAvailability();
 
 async function checkQworumAvailability() {
   try {
+    const settingsSd = SemanticData();
+
+    await settingsSd.readFromUrl(new URL('/settings.ttl', `${location}`));
+    console.debug(`2 ${settingsSd}`);
+
+    const 
+    settingsModel = await Settings.readFrom(settingsSd.value);
+    console.debug(`settingsModel`,settingsModel);
+    const
+    settings      = {version: await settingsModel.getVersion()};
+
     console.log(`checking `);
     await Qworum.checkAvailability();
     console.log(`The Qworum browser extension is running !`);
 
-    // Execute a Qworum script
-    // (See https://qworum.net/en/specification/v1/#script)
     await Qworum.eval(
       Script(
-        // Call the `home` end-point
-        Call('@', `/v${siteVersion}/home/`)
-
-        // Fault('* test fault')
-        // Return(Json('test value'))
+        Call('@', `/v${settings.version}/home/`)
       )
     );
   } catch (error) {
@@ -47,9 +48,10 @@ async function checkQworumAvailability() {
 
     // Ask the end-user to install Qworum
     document.querySelector('.hide').className = 'show';
+    location.reload();
 
     // This is a workaround for the "prefetching" of this page by browsers.
     // Prefetching doesn't work with Qworum, because during prefetching the document.location URL does not point the actual page URL, but it points to whatever page the browser happens to be on when it does the prefetching.
-    setInterval(() => location.reload(), 10000);
+    setInterval(() => location.reload(), 3000);
   }
 }

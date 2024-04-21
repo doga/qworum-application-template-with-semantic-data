@@ -10,3 +10,5 @@ export {
   prefixes, LangString,
   Model
 } from 'https://esm.sh/gh/doga/object-semantic-mapping@1.1.1/mod.mjs';
+
+export { Language } from "https://esm.sh/gh/doga/language@1.0.2/mod.mjs";
