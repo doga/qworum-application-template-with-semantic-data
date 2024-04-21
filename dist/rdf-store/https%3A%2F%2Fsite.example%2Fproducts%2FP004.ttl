@@ -1,0 +1,19 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P004
+  a schema:Product;
+  schema:productId "CC0405D2022052512348";
+  schema:name "CleanCare Hand Wash";
+  schema:description '''
+    Gentle hand wash with aloe vera extract, 500ml.
+
+    Elevate your hand hygiene routine with our luxurious and nourishing hand wash, designed to pamper your skin while effectively cleansing and protecting against germs. Infused with botanical extracts, moisturizing oils, and gentle cleansing agents, our hand wash provides a spa-like experience every time you lather up. The rich, creamy lather envelops your hands in a cocoon of softness, leaving them feeling refreshed, hydrated, and delicately scented with a hint of natural fragrance.
+
+    Formulated with care for both your skin and the environment, our hand wash is free from harsh chemicals, parabens, and sulfates, making it suitable for all skin types, including sensitive skin. Whether you're washing your hands after a long day or simply indulging in a moment of self-care, our hand wash is a luxurious addition to your daily routine. Transform the simple act of hand washing into a sensory experience that nourishes your skin and uplifts your spirits with our premium hand wash that combines cleanliness with indulgence.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "4.49";
+    schema:priceCurrency "EUR"
+  ].

@@ -1,0 +1,21 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P005
+  a schema:Product;
+  schema:productId "QM0504E2022053012349";
+  schema:name "QuickMeal Instant Noodles";
+  schema:description '''
+    Spicy chicken flavor instant noodles, pack of 5.
+
+    Experience the ultimate convenience and deliciousness with our premium instant noodles, the perfect solution for a quick and satisfying meal on the go. Made with high-quality ingredients and authentic flavors, our instant noodles are a culinary delight that will transport your taste buds to the bustling streets of Asia. From savory miso ramen to spicy tom yum, our noodle selection offers a variety of mouthwatering options to suit every palate and craving.
+
+    Simply add hot water and watch as our instant noodles transform into a steaming bowl of comfort and flavor in minutes. Whether you're craving a comforting bowl of noodles on a chilly day or need a quick and easy meal option, our instant noodles are a versatile and delicious choice. With the perfect balance of noodles, seasonings, and toppings, our instant noodles are a convenient and satisfying meal solution that will leave you feeling full and satisfied. Elevate your mealtime experience with our premium instant noodles and enjoy a taste of authentic Asian cuisine in the comfort of your own home.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "1.99";
+    schema:priceCurrency "EUR"
+  ].
+
+

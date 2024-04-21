@@ -1,23 +1,22 @@
 // Checks whether the Qworum extension is running on the end-user's browser.
 // Used by check-qworum-availability-LANG.html.
 
-// Use Qworum
-import { Qworum } from './imports.mjs';
+import { QworumScript, Qworum } from './deps.mjs';
 
 const
-// Qworum Data value types
-Json         = Qworum.Json,
-SemanticData = Qworum.SemanticData,
-// Qworum instructions
-Data     = Qworum.Data,
-Return   = Qworum.Return,
-Sequence = Qworum.Sequence,
-Goto     = Qworum.Goto,
-Call     = Qworum.Call,
-Fault    = Qworum.Fault,
-Try      = Qworum.Try,
-// Qworum script
-Script = Qworum.Script,
+// Data values
+Json         = QworumScript.Json.build,
+SemanticData = QworumScript.SemanticData.build,
+// Instructions
+Data     = QworumScript.Data.build,
+Return   = QworumScript.Return.build,
+Sequence = QworumScript.Sequence.build,
+Goto     = QworumScript.Goto.build,
+Call     = QworumScript.Call.build,
+Fault    = QworumScript.Fault.build,
+Try      = QworumScript.Try.build,
+// Script
+Script = QworumScript.Script.build,
 
 siteVersion = new URLSearchParams(document.location.search).get('version');
 
@@ -51,9 +50,6 @@ async function checkQworumAvailability() {
 
     // This is a workaround for the "prefetching" of this page by browsers.
     // Prefetching doesn't work with Qworum, because during prefetching the document.location URL does not point the actual page URL, but it points to whatever page the browser happens to be on when it does the prefetching.
-    setInterval(() => location.reload(), 3000);
-
-
+    setInterval(() => location.reload(), 5000);
   }
-
 }

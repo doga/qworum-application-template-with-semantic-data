@@ -1,0 +1,19 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P003
+  a schema:Product;
+  schema:productId "GB0302C2022052012347";
+  schema:name "GoodBake Cookies";
+  schema:description '''
+    Delicious chocolate chip cookies, 200g.
+
+    Treat yourself to a heavenly delight with our freshly baked artisanal cookies that are a symphony of flavor and texture. Handcrafted with love and care, each batch of our cookies is made from the finest ingredients, including premium butter, rich chocolate, and aromatic spices, to create a mouthwatering experience that will transport you to cookie paradise. From classic chocolate chip cookies to indulgent double chocolate fudge, our cookie selection offers a variety of flavors to satisfy every craving and sweet tooth.
+
+    Sink your teeth into a warm, chewy cookie that is perfectly crispy on the edges and gooey in the center, delivering a melt-in-your-mouth sensation with every bite. Whether you enjoy them with a glass of cold milk, a cup of hot coffee, or simply on their own, our artisanal cookies are a delightful treat that brings joy to any occasion. With a range of flavors, textures, and sizes to choose from, our cookies make the perfect gift for loved ones, a sweet indulgence for yourself, or a charming addition to any gathering. Experience the magic of our artisanal cookies and let the aroma of freshly baked goodness fill your home with warmth and happiness.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "3.99";
+    schema:priceCurrency "EUR"
+  ].

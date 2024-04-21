@@ -1,0 +1,24 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P001
+  a schema:Product;
+  schema:name "Silk Essence Shampoo".
+
+:P002
+  a schema:Product;
+  schema:name "FreshFruit Juice".
+
+:P003
+  a schema:Product;
+  schema:name "GoodBake Cookies".
+
+:P004
+  a schema:Product;
+  schema:name "CleanCare Hand Wash".
+
+:P005
+  a schema:Product;
+  schema:name "QuickMeal Instant Noodles".
+
+

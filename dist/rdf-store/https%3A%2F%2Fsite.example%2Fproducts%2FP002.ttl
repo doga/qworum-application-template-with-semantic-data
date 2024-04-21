@@ -1,0 +1,19 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P002
+  a schema:Product;
+  schema:productId "FFG0203B2022051512346";
+  schema:name "FreshFruit Juice";
+  schema:description '''
+    Refreshing orange juice, 1L.
+
+    Indulge in the refreshing burst of natural goodness with our premium bottled fruit juice collection. Made from the finest handpicked fruits at the peak of ripeness, our juices are a symphony of flavors that will tantalize your taste buds and invigorate your senses. Each bottle is a celebration of nature's bounty, packed with vitamins, antioxidants, and pure fruit essence to give you a revitalizing boost any time of the day.
+
+    Savor the crisp sweetness of sun-ripened apples, the tangy zest of ripe oranges, or the tropical paradise of succulent mangoes in every sip of our bottled fruit juices. With no added sugars, preservatives, or artificial flavors, our juices are a guilt-free indulgence that promises pure, unadulterated fruit goodness in every drop. Whether you're looking for a morning pick-me-up, a midday refreshment, or a post-workout rehydration, our bottled fruit juices are the perfect choice for a healthy and delicious beverage that nourishes your body and delights your taste buds. Experience the taste of nature in every bottle and elevate your daily hydration with our premium fruit juice collection.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "2.49";
+    schema:priceCurrency "EUR"
+  ].

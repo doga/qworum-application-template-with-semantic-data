@@ -1,0 +1,19 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P001
+  a schema:Product;
+  schema:productId "LG0101A2022051012345";
+  schema:name "Silk Essence Shampoo";
+  schema:description '''
+    Moisturizing shampoo for soft and silky hair, 250ml. 
+  
+    Introducing our luxurious and revitalizing "Silk Essence Shampoo," a premium hair care product designed to transform your daily shower routine into a spa-like experience. Infused with the finest silk proteins and botanical extracts, this shampoo gently cleanses and nourishes your hair, leaving it silky smooth, lustrous, and irresistibly fragrant. Say goodbye to dull, lifeless locks and hello to vibrant, healthy hair with our Silk Essence Shampoo, meticulously crafted to bring out the natural beauty of your hair.
+
+    Formulated for all hair types, our Silk Essence Shampoo boasts a sulfate-free and paraben-free formula, ensuring a gentle yet effective cleanse that won't strip your hair of its natural oils. Whether you have dry, damaged, or color-treated hair, this luxurious shampoo is your ticket to hair transformation. Treat yourself to the ultimate pampering experience and indulge in the luxurious lather of our Silk Essence Shampoo, where every wash is a rejuvenating treat for your hair and senses. Experience the difference with our Silk Essence Shampoo – because your hair deserves nothing but the best.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "5.99";
+    schema:priceCurrency "EUR"
+  ].
