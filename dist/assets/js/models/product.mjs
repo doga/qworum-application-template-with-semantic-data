@@ -15,7 +15,7 @@ pProductId   = `${schema}productId`;
 class Product extends Model {
   static types = [`${schema}Product`].map(t => new URL(t));
 
- static async readFrom(datasets, config) {
+  static async readFrom(datasets, config) {
     try {
       const 
       {dataSets, count} = Model._normaliseReadArgs(datasets, config),

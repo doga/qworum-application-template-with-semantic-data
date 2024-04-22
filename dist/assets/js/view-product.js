@@ -19,42 +19,47 @@ Script = QworumScript.Script.build;
 await showItem();
 
 async function showItem() {
-  // console.debug(`showing item `);
   const
   params = {
     product: await Qworum.getData('product'), // SemanticData
   };
 
-  // console.log(`Product info is semantic data: ${params.product.getTag && params.product.getTag() === 'semantic'}\nProduct info: ${params.product}`);
-
   const
-  productModel     = Product.readFrom(params.product)[0],   // Product
+  productModel     = (await Product.readFrom(params.product.value))[0],
   productDetailsSd = SemanticData();
 
   await productDetailsSd.readFromUrl(
     new URL(
-      `/rdf-store/${encodeURIComponent(productModel.id)}.ttl`, 
+      `/rdf-store/${encodeURIComponent(encodeURIComponent(productModel.id))}.ttl`, 
       `${location}`
     )
   );
-
+  
   productModel.datasets.add(productDetailsSd.value);
-
+  
   const
   product = {
     names       : await productModel.getNames(),
     descriptions: await productModel.getDescriptions(),
+    offers      : await productModel.getOffers()
   },
 
   // UI
   closeButton = document.getElementById('close'),
   title       = document.getElementById('product-title'),
+  price       = document.getElementById('product-price'),
   details     = document.getElementById('product-details');
 
   for (const productName of product.names) {
     title.innerText = productName; 
     break;
   }
+
+  for (const offer of product.offers) {
+    price.innerText = `${offer.price} ${offer.priceCurrency}`; 
+    break;
+  }
+
   for (const productDescription of product.descriptions) {
     details.innerText = productDescription.value; 
     break;

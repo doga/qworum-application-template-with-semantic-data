@@ -30,3 +30,7 @@ li {
 .product-title  {
   text-transform: capitalize;
 }
+
+.product-price  {
+  font-family: 'Courier New', Courier, monospace;
+}

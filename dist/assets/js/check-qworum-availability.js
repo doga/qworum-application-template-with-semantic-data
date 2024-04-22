@@ -26,17 +26,13 @@ async function checkQworumAvailability() {
     const settingsSd = SemanticData();
 
     await settingsSd.readFromUrl(new URL('/settings.ttl', `${location}`));
-    console.debug(`2 ${settingsSd}`);
 
     const 
-    settingsModel = await Settings.readFrom(settingsSd.value);
-    console.debug(`settingsModel`,settingsModel);
-    const
+    settingsModel = await Settings.readFrom(settingsSd.value),
     settings      = {version: await settingsModel.getVersion()};
 
-    console.log(`checking `);
     await Qworum.checkAvailability();
-    console.log(`The Qworum browser extension is running !`);
+    console.info(`The Qworum browser extension is running !`);
 
     await Qworum.eval(
       Script(
@@ -44,7 +40,7 @@ async function checkQworumAvailability() {
       )
     );
   } catch (error) {
-    console.log(`Error: ${error}`);
+    console.error(`Error: ${error}`);
 
     // Ask the end-user to install Qworum
     document.querySelector('.hide').className = 'show';
