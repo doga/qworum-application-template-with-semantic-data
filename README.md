@@ -26,6 +26,10 @@ Here is the directory structure:
 - Directories with 2-letter names such as `en` contain the localised phases that the end-user actually sees.
 - `settings.ttl` is used internally by the website. It defines the API version that will run by default, and the localisations that are available for all API versions.
 
+## Demo
+
+A [demo video](https://www.youtube.com/watch?v=woNsdX8RMfk) is available on Youtube.
+
 ## License
 
 This software is released under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
