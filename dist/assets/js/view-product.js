@@ -21,37 +21,35 @@ await showItem();
 async function showItem() {
   const
   params = {
-    product: await Qworum.getData('product'), // SemanticData
+    product: {sd: await Qworum.getData('product')}
+  },
+  product = {
+    model: (await Product.readFrom(params.product.sd.value))[0],
+    sd   : SemanticData(),
   };
 
-  const
-  productModel     = (await Product.readFrom(params.product.value))[0],
-  productDetailsSd = SemanticData();
-
-  await productDetailsSd.readFromUrl(
+  await product.sd.readFromUrl(
     new URL(
-      `/rdf-store/${encodeURIComponent(encodeURIComponent(productModel.id))}.ttl`, 
+      `/rdf-store/${encodeURIComponent(encodeURIComponent(product.model.id))}.ttl`, 
       `${location}`
     )
   );
   
-  productModel.datasets.add(productDetailsSd.value);
+  product.model.datasets.add(product.sd.value);
   
-  const
-  product = {
-    names       : await productModel.getNames(),
-    descriptions: await productModel.getDescriptions(),
-    offers      : await productModel.getOffers()
-  },
+  product.names        = await product.model.getNames();
+  product.offers       = await product.model.getOffers();
+  product.descriptions = await product.model.getDescriptions();
 
+  const
   // UI
   closeButton = document.getElementById('close'),
   title       = document.getElementById('product-title'),
   price       = document.getElementById('product-price'),
   details     = document.getElementById('product-details');
 
-  for (const productName of product.names) {
-    title.innerText = productName; 
+  for (const name of product.names) {
+    title.innerText = name; 
     break;
   }
 
@@ -60,8 +58,8 @@ async function showItem() {
     break;
   }
 
-  for (const productDescription of product.descriptions) {
-    details.innerText = productDescription.value; 
+  for (const description of product.descriptions) {
+    details.innerText = description.value; 
     break;
   }
 

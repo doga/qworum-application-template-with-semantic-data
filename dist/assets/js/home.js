@@ -20,28 +20,27 @@ await showItems();
 
 async function showItems() {
   const 
-  productInventorySd      = SemanticData(),
-  productInventoryDataset = productInventorySd.value;
-
-  await productInventorySd.readFromUrl(new URL('/rdf-store/inventory.ttl', `${location}`));
+  inventory = {
+    sd : SemanticData(),
+    url: new URL('/rdf-store/inventory.ttl', `${location}`)
+  };
 
   // read the products from database
-  const 
-  productModels = await Product.readFrom(productInventoryDataset),
-  contentArea   = document.getElementById('products');
+  await inventory.sd.readFromUrl(inventory.url);
+  inventory.products = await Product.readFrom(inventory.sd.value);
 
-  for (const productModel of productModels) {
-    const
-    productSd      = SemanticData(),
-    productDataset = productSd.value;
+  const contentArea = document.getElementById('products');
 
-    productModel.writeTo(productDataset);
-    
-    
+  for (const p of inventory.products) {
     const
     product = {
-      names: await productModel.getNames(),
-    },
+      model: p,
+      names: await p.getNames(),
+      sd   : SemanticData(),
+    };
+    await product.model.writeTo(product.sd.value);
+
+    const
     li     = document.createElement('li'),
     button = document.createElement('button');
 
@@ -53,12 +52,12 @@ async function showItems() {
       break;
     }
 
-  // send to product to the view-product endpoint
+    // send to product to the view-product endpoint
     button.addEventListener('click', async () => {
       await Qworum.eval(
         Script(
           Sequence(
-            Call('@', '../view-product/', { name: 'product', value: productSd }),
+            Call('@', '../view-product/', { name: 'product', value: product.sd }),
             Goto()
           )
         )
