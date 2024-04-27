@@ -1,6 +1,6 @@
 // The application's JavaScript dependencies.
 
-export { QworumScript, Qworum } from "https://esm.sh/gh/doga/qworum-for-web-pages@1.6.6/mod.mjs";
+export { QworumScript, Qworum } from "https://esm.sh/gh/doga/qworum-for-web-pages@1.6.7/mod.mjs";
 
 import dataFactory from 'https://esm.sh/gh/rdfjs-base/data-model@v2.0.1/index.js';
 export { dataFactory };
