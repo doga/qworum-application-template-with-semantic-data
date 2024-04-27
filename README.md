@@ -6,8 +6,8 @@ This is a template for a website that uses [Qworum](https://qworum.net)'s advanc
 
 This template is:
 
-- _Multi-language_, with language-independent API endpoint paths.
-- _Versioned_. Indeed, Qworum applications are structured as Qworum APIs, and versioned APIs ensure that other applications that depend on this one will not break after an update.
+- _Versioned_. Qworum applications are structured as versioned Qworum APIs, which ensures that other applications that depend on this one will not break after an update.
+- _Internationalised_. Qworum API endpoints have language-independent paths which redirect to localised pages.
 - _Semantic_, meaning that it uses [RDF](https://www.w3.org/TR/rdf-primer/) for representing data.
 
 In order to make the programmatic handling of RDF easy, this project uses the ORM-like [OSM](https://github.com/doga/object-semantic-mapping) framework on top of RDF.
