@@ -24,7 +24,7 @@ Here is the directory structure:
 - `rdf-store` contains the application's RDF data. In a real-world application this could be replaced by a [SPARQL](https://www.w3.org/TR/sparql11-overview/) API endpoint.
 - Directories of the form `v{number}` each contain a different version of the application's API. They contain the first phases of the API endpoints (`home`, `view-product` etc), which are charged with redirecting the user to localised phases.
 - Directories with 2-letter names such as `en` contain the localised phases that the end-user actually sees.
-- Although this is not required for a knowledge graph application, RDF can also be used internally by the application. This is shomn by `settings.ttl` which defines the API version that will run by default and the localisations that are available.
+- Although this is not required for a knowledge graph application, RDF can also be used internally by the application. This is shown by `settings.ttl` which defines the API version that will run by default and the localisations that are available.
 
 ## Demo
 
