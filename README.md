@@ -16,9 +16,9 @@ In order to make the programmatic handling of RDF easy, this project uses the OR
 
 ### Qworum API
 
-This website implements a Qworum API that has 2 endpoints:
+This web application is implemented as a Qworum API❖ that has 2 endpoints❖❖:
 
-- The `home` endpoint, which is the main application (meaning that this is an endpoint that never returns a result).
+- The `home` endpoint, which is the main application (meaning that this is an endpoint that is not expected to return a result).
 - The `view-product` endpoint, called by `home`.
 
 ### Directory structure
@@ -35,5 +35,11 @@ A [demo video](https://www.youtube.com/watch?v=woNsdX8RMfk) is available on Yout
 ## License
 
 This software is released under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+
+## Notes
+
+❖ Best practice is to use the term "[Qworum class](https://qworum.net/en/specification/v1/#class)" instead of "Qworum API". This is because Qworum uses the [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) programming paradigm for structuring applications. This README document uses the API terminology, as it should be familiar to first-time Qworum programmers.
+
+❖❖ Best practice is to use the term "method" instead of "endpoint".
 
 ∎
