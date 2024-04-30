@@ -12,6 +12,8 @@ This template is:
 
 In order to make the programmatic handling of RDF easy, this project uses the ORM-like [OSM](https://github.com/doga/object-semantic-mapping) framework on top of RDF.
 
+This project has a [companion project](https://github.com/doga/qworum-application-template) that uses JSON instead of RDF.
+
 ## The application structure
 
 ### Qworum API
