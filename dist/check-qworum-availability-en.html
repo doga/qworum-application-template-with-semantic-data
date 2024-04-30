@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qworum availability checker</title>
-  <style> /* TODO factor out the css into a file */
+  <title>Detecting Qworum …</title>
+  <style>
     main {
       margin: 5em;
     }
@@ -20,7 +20,12 @@
       font-weight: bold; 
       color: rgb(15,77,146); /* Yale Blue https://html-color.codes/blue */
     }
-    a:visited {color: black;}
+    /* a:visited {color: black;} */
+
+    p.install {
+      font-size: x-large;
+      font-weight: bold;
+    }
 
     @media (prefers-color-scheme: dark) {
       body {
@@ -43,22 +48,16 @@
   <main class="hide">
     <h1>
       🟢
-      Please install or activate
-      Qworum, then refresh this page.
+      Please make sure Qworum is installed and activated
     </h1>
     <p>
-      This web application uses the Qworum browser extension.
+      This application will automatically launch afterwards.
     </p>
-    <ol>
-      <li>
-        Please install Qworum from the
-        <a href="https://chrome.google.com/webstore/search/qworum" target="_blank">Chrome Web Store</a>,
-        or activate it if the extension is already installed.
-      </li>
-      <li>
-        Then refresh this page.
-      </li>
-    </ol>
+    <p class="install">
+      <a href="https://chromewebstore.google.com/detail/qworum-the-service-web/leaofcglebjeebmnmlapbnfbjgfiaokg" target="_blank">
+        Install Qworum from Chrome Web Store
+      </a>
+    </p>
   </main>
 
   <script type="module" src="/assets/js/check-qworum-availability.js"></script>
