@@ -1,67 +1,91 @@
-import { Product } from "./models/product.mjs"; 
-import { QworumScript, Qworum } from './deps.mjs';
+import { QworumScript as QS, Qworum, iri, IRI, rdfTermFactory as t } from './deps.mjs';
+import rdfPrefixes from "../js/modules/rdf-prefixes.mjs";
+import { readInventory } from "../js/modules/inventory.mjs";
 
 const
+{ rdf, schemaDotOrg } = rdfPrefixes,
+
 // Data values
-Json         = QworumScript.Json.build,
-SemanticData = QworumScript.SemanticData.build,
+Json         = QS.Json.build,
+SemanticData = QS.SemanticData.build,
 // Instructions
-Data     = QworumScript.Data.build,
-Return   = QworumScript.Return.build,
-Sequence = QworumScript.Sequence.build,
-Goto     = QworumScript.Goto.build,
-Call     = QworumScript.Call.build,
-Fault    = QworumScript.Fault.build,
-Try      = QworumScript.Try.build,
+Data     = QS.Data.build,
+Return   = QS.Return.build,
+Sequence = QS.Sequence.build,
+Goto     = QS.Goto.build,
+Call     = QS.Call.build,
+Fault    = QS.Fault.build,
+Try      = QS.Try.build,
 // Script
-Script = QworumScript.Script.build;
+Script = QS.Script.build;
 
 await showItems();
 
 async function showItems() {
-  const 
-  inventory = {
-    sd : SemanticData(),
-    url: new URL('/rdf-store/inventory.ttl', `${location}`)
-  };
+  // Read the inventory data.
+  /** 
+   * @type {(QS.SemanticData | null)} 
+   * @see {@link https://qworum.net/docs/qworum-for-web-pages/latest/~/semanticdata | SemanticData}
+   **/
+  let inventory = await Qworum.getData(['@','inventory']);
 
-  // read the products from database
-  await inventory.sd.readFromUrl(inventory.url);
-  inventory.products = await Product.readFrom(inventory.sd.value);
+  if(!inventory) {
+    inventory = await readInventory();
+    await Qworum.setData(['@','inventory'], inventory);
+  }
 
-  const contentArea = document.getElementById('products');
+  // Read the shop-specific product ids and their names.
+  const
+  /** 
+   * A Dataset object containing product-name statements.
+   * @see {@link https://rdf.js.org/dataset-spec/#dataset-interface}
+   **/
+  productNameStatements = inventory.value.filter(
+    statement => iri`${statement.predicate.value}`.equals(iri`${schemaDotOrg}name`)
+  ),
 
-  for (const p of inventory.products) {
-    const
-    product = {
-      model: p,
-      names: await p.getNames(),
-      sd   : SemanticData(),
-    };
-    await product.model.writeTo(product.sd.value);
+  // Show the products buttons.
+  contentArea = document.getElementById('products');
 
+  for (const productNameStatement of productNameStatements) {
+    const 
+    /** 
+     * The shop-specific product ID.
+     * @type {IRI} 
+     * @see {@link https://qworum.net/docs/qworum-for-web-pages/latest/~/iri}
+     **/
+    productId = iri`${productNameStatement.subject.value}`,
+
+    /** 
+     * The product name.
+     * @type {string} 
+     **/
+    productName = productNameStatement.object.value;
+
+    // Show the product button.
     const
     li     = document.createElement('li'),
     button = document.createElement('button');
 
-    for (const productName of product.names) {
-      button.className = 'product-title';
-      button.innerText = productName;
-      li.appendChild(button);
-      contentArea.appendChild(li);
-      break;
-    }
+    button.className = 'product-title link-like';
+    li.appendChild(button);
+    contentArea.appendChild(li);
 
-    // send to product to the view-product endpoint
+    button.innerText = productName;
+
+    console.debug(Json(`${productId}`));
+
+    // Configure the product button to call the product-viewing method on click/tap.
     button.addEventListener('click', async () => {
       await Qworum.eval(
         Script(
           Sequence(
-            Call('@', '../view-product/', { name: 'product', value: product.sd }),
+            Call('@', '../view-product/', { name: 'product id', value: Json(`${productId}`) }),
             Goto()
           )
         )
       );
     });
   }
+
 }

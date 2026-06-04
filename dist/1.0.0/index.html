@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>Redirect to user's preferred language</title>
+</head>
+
+<body>
+	<script type="module">
+		import Langs from '/assets/js/modules/site-languages.mjs';
+		const 
+		lang              = (await Langs.read()).getUserLang(),
+		apiVersionMatcher = /^\/(?<apiVersion>\d+\.\d+\.\d+)\/(?<rest>\S*)$/,
+		apiVersion        = (`${document.location.pathname}`.match(apiVersionMatcher)).groups.apiVersion;
+
+		window.location.replace(
+			`/check-qworum-availability-${lang.iso639_1}.html?call=${encodeURIComponent('/'+apiVersion+'/home/')}`
+		);
+	</script>
+
+</body>
+
+</html>

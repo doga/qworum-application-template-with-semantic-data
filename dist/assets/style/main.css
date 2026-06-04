@@ -34,3 +34,46 @@ li {
 .product-price  {
   font-family: 'Courier New', Courier, monospace;
 }
+
+
+/* Style buttons to look like hyperlinks */
+button.link-like,
+a.button-like {
+  /* Remove default button styling */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit; /* Inherit font from parent */
+  cursor: pointer; /* Show pointer cursor on hover */
+
+  /* Hyperlink styling */
+  color: #0066cc; /* Typical link blue */
+  text-decoration: underline;
+  outline: none; /* Remove default focus outline (optional) */
+
+  /* Hover, active, and visited states */
+  transition: color 0.2s ease;
+}
+
+button.link-like:hover,
+a.button-like:hover {
+  color: #004499; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+button.link-like:active,
+a.button-like:active {
+  color: #ff0000; /* Red for active/clicked state (like traditional links) */
+}
+
+/* Focus state for accessibility */
+button.link-like:focus,
+a.button-like:focus {
+  outline: 1px dotted #0066cc; /* Dotted outline for focus */
+}
+
+/* Visited state (if using <a> tags) */
+a.button-like:visited {
+  color: #800080; /* Purple for visited links */
+}

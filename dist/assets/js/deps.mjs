@@ -1,14 +1,21 @@
-// The application's JavaScript dependencies.
+/**
+ * @file This application's dependencies.
+ * @see {@link https://github.com/doga/qworum-for-web-pages}
+ * @see {@link https://github.com/doga/language}
+ */
 
-export { QworumScript, Qworum } from "https://esm.sh/gh/doga/qworum-for-web-pages@1.7.0/mod.mjs";
+export {
+  // For using the browsers' Qworum features
+  Qworum,
 
-import dataFactory from 'https://esm.sh/gh/rdfjs-base/data-model@v2.0.1/index.js';
-export { dataFactory };
+  // For creating Qworum scripts and session data
+  QworumScript, 
 
-export { 
-  IRI, UniformResourceName,
-  prefixes, LangString,
-  Model
-} from 'https://esm.sh/gh/doga/object-semantic-mapping@1.1.2/mod.mjs';
+  // For manipulating semantic RDF data in scripts and session data
+  iri, irl, url, urn, IRI, IRL, URN, 
+  rdfTermFactory
+} from 'https://esm.sh/gh/doga/qworum-for-web-pages@1.8.4/mod.mjs';
 
-export { Language } from "https://esm.sh/gh/doga/language@1.0.2/mod.mjs";
+export {
+  langTag, lang, LanguageTag, Language
+} from 'https://esm.sh/gh/doga/language@1.1.0/mod.mjs';

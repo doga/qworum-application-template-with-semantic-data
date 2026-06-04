@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 
 <head>
 	<meta charset="utf-8">
@@ -12,8 +12,15 @@
 
 <body>
 	<script type="module">
-		import { Redirect } from "/assets/js/modules/redirect.mjs";
-		await Redirect.do();
+		import Langs from '/assets/js/modules/site-languages.mjs';
+		const userLang = (await Langs.read('../languages.json')).getUserLang();
+
+		window.location.replace(
+			'/' + userLang.iso639_1 +
+			window.location.pathname +
+			window.location.search +
+			window.location.hash
+		);
 	</script>
 </body>
 </html>

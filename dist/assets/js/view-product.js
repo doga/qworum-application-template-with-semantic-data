@@ -1,73 +1,120 @@
-import { Product } from "./models/product.mjs"; 
-import { QworumScript, Qworum } from './deps.mjs';
+import { QworumScript as QS, Qworum, iri, IRI } from './deps.mjs';
+import rdfPrefixes from "../js/modules/rdf-prefixes.mjs";
+import { readInventory } from "../js/modules/inventory.mjs";
 
 const
+{ rdf, schemaDotOrg } = rdfPrefixes,
+
 // Data values
-Json         = QworumScript.Json.build,
-SemanticData = QworumScript.SemanticData.build,
+Json         = QS.Json.build,
+SemanticData = QS.SemanticData.build,
 // Instructions
-Data     = QworumScript.Data.build,
-Return   = QworumScript.Return.build,
-Sequence = QworumScript.Sequence.build,
-Goto     = QworumScript.Goto.build,
-Call     = QworumScript.Call.build,
-Fault    = QworumScript.Fault.build,
-Try      = QworumScript.Try.build,
+Data     = QS.Data.build,
+Return   = QS.Return.build,
+Sequence = QS.Sequence.build,
+Goto     = QS.Goto.build,
+Call     = QS.Call.build,
+Fault    = QS.Fault.build,
+Try      = QS.Try.build,
 // Script
-Script = QworumScript.Script.build;
+Script = QS.Script.build;
 
 await showItem();
 
 async function showItem() {
   const
-  params = {
-    product: {sd: await Qworum.getData('product')}
-  },
-  product = {
-    model: (await Product.readFrom(params.product.sd.value))[0],
-    sd   : SemanticData(),
+  /**
+   * The inventory.
+   * @type {QS.SemanticData}
+   */
+  inventory = await Qworum.getData(['@','inventory']),
+
+  /**
+   * The ID of the product to show.
+   * @type {IRI}
+   */
+  productId = iri`${(await Qworum.getData('product id')).value}`,
+
+  /** 
+   * A Dataset object containing this product's statements.
+   * @see {@link https://rdf.js.org/dataset-spec/#dataset-interface}
+   **/
+  productStatements = inventory.value.filter(
+    statement => iri`${productId}`.equals(iri`${statement.subject.value}`)
+  ),
+
+  /** 
+   * A Dataset object containing this product's name statement.
+   * @see {@link https://rdf.js.org/dataset-spec/#dataset-interface}
+   **/
+  productNameStatements = productStatements.filter(
+    statement => iri`${statement.predicate.value}`.equals(iri`${schemaDotOrg}name`)
+  ),
+
+  /** 
+   * A Dataset object containing this product's description statement.
+   * @see {@link https://rdf.js.org/dataset-spec/#dataset-interface}
+   **/
+  productDescriptionStatements = productStatements.filter(
+    statement => iri`${statement.predicate.value}`.equals(iri`${schemaDotOrg}description`)
+  ),
+
+  /** 
+   * A Dataset object containing this product's offers statements.
+   * The offer identifier is the object in the statements.
+   * @see {@link https://rdf.js.org/dataset-spec/#dataset-interface}
+   **/
+  productOffersStatements = productStatements.filter(
+    statement => iri`${statement.predicate.value}`.equals(iri`${schemaDotOrg}offers`)
+  ),
+
+  // UI
+  ui = {
+    closeButton: document.getElementById('close'),
+    title      : document.getElementById('product-title'),
+    price      : document.getElementById('product-price'),
+    details    : document.getElementById('product-details')
   };
 
-  await product.sd.readFromUrl(
-    new URL(
-      `/rdf-store/${encodeURIComponent(encodeURIComponent(product.model.id))}.ttl`, 
-      `${location}`
-    )
-  );
+  // Show the name.
+  for (const nameStatement of productNameStatements) {
+    ui.title.innerText = nameStatement.object.value; 
+  }
   
-  product.model.datasets.add(product.sd.value);
+  // Show the offer.
+  for (const offersStatement of productOffersStatements) {
+    const 
+    offerId                 = offersStatement.object,
+    offerDetailsStatements  = productStatements.filter(s => offerId.equals(s.subject)),
+    priceStatements         = inventory.value.filter(s => (
+      s.subject.equals(offerId) &&
+      iri`${s.predicate.value}`.equals(iri`${schemaDotOrg}price`)
+    )),
+    priceCurrencyStatements = inventory.value.filter(s => (
+      s.subject.equals(offerId) &&
+      iri`${s.predicate.value}`.equals(iri`${schemaDotOrg}priceCurrency`)
+    ));
+
+    let price, priceCurrency;
+    for (const priceStatement of priceStatements) {
+      price = priceStatement.object.value;
+    }
+    for (const priceCurrencyStatement of priceCurrencyStatements) {
+      priceCurrency = priceCurrencyStatement.object.value;
+    }
+    ui.price.innerText = `${price} ${priceCurrency}`; 
+  }
   
-  product.names        = await product.model.getNames();
-  product.offers       = await product.model.getOffers();
-  product.descriptions = await product.model.getDescriptions();
-
-  const
-  // UI
-  closeButton = document.getElementById('close'),
-  title       = document.getElementById('product-title'),
-  price       = document.getElementById('product-price'),
-  details     = document.getElementById('product-details');
-
-  for (const name of product.names) {
-    title.innerText = name; 
-    break;
+  // Show the description.
+  for (const descriptionStatement of productDescriptionStatements) {
+    ui.details.innerText = descriptionStatement.object.value; 
   }
 
-  for (const offer of product.offers) {
-    price.innerText = `${offer.price} ${offer.priceCurrency}`; 
-    break;
-  }
-
-  for (const description of product.descriptions) {
-    details.innerText = description.value; 
-    break;
-  }
-
-  closeButton.addEventListener('click', (event) => {
-    // event.preventDefault();
+  // Configure navigation.
+  ui.closeButton.addEventListener('click', event => {
     Qworum.eval(
       Script(
-        Return(SemanticData())
+        Return(Json(null))
       )
     );
   });

@@ -1,0 +1,89 @@
+PREFIX : <https://site.example/products/>
+PREFIX schema: <https://schema.org/>
+
+:P001
+  a schema:Product;
+  schema:productId "LG0101A2022051012345";
+  schema:name "🧴 Silk Essence Shampoo";
+  schema:description '''
+    Moisturizing shampoo for soft and silky hair, 250ml. 
+  
+    Introducing our luxurious and revitalizing "Silk Essence Shampoo," a premium hair care product designed to transform your daily shower routine into a spa-like experience. Infused with the finest silk proteins and botanical extracts, this shampoo gently cleanses and nourishes your hair, leaving it silky smooth, lustrous, and irresistibly fragrant. Say goodbye to dull, lifeless locks and hello to vibrant, healthy hair with our Silk Essence Shampoo, meticulously crafted to bring out the natural beauty of your hair.
+
+    Formulated for all hair types, our Silk Essence Shampoo boasts a sulfate-free and paraben-free formula, ensuring a gentle yet effective cleanse that won't strip your hair of its natural oils. Whether you have dry, damaged, or color-treated hair, this luxurious shampoo is your ticket to hair transformation. Treat yourself to the ultimate pampering experience and indulge in the luxurious lather of our Silk Essence Shampoo, where every wash is a rejuvenating treat for your hair and senses. Experience the difference with our Silk Essence Shampoo – because your hair deserves nothing but the best.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "5.99";
+    schema:priceCurrency "EUR"
+  ].
+
+:P002
+  a schema:Product;
+  schema:productId "FFG0203B2022051512346";
+  schema:name "🧃 FreshFruit Juice";
+  schema:description '''
+    Refreshing orange juice, 1L.
+
+    Indulge in the refreshing burst of natural goodness with our premium bottled fruit juice collection. Made from the finest handpicked fruits at the peak of ripeness, our juices are a symphony of flavors that will tantalize your taste buds and invigorate your senses. Each bottle is a celebration of nature's bounty, packed with vitamins, antioxidants, and pure fruit essence to give you a revitalizing boost any time of the day.
+
+    Savor the crisp sweetness of sun-ripened apples, the tangy zest of ripe oranges, or the tropical paradise of succulent mangoes in every sip of our bottled fruit juices. With no added sugars, preservatives, or artificial flavors, our juices are a guilt-free indulgence that promises pure, unadulterated fruit goodness in every drop. Whether you're looking for a morning pick-me-up, a midday refreshment, or a post-workout rehydration, our bottled fruit juices are the perfect choice for a healthy and delicious beverage that nourishes your body and delights your taste buds. Experience the taste of nature in every bottle and elevate your daily hydration with our premium fruit juice collection.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "2.49";
+    schema:priceCurrency "EUR"
+  ].
+
+:P003
+  a schema:Product;
+  schema:productId "GB0302C2022052012347";
+  schema:name "🍪 GoodBake Cookies";
+  schema:description '''
+    Delicious chocolate chip cookies, 200g.
+
+    Treat yourself to a heavenly delight with our freshly baked artisanal cookies that are a symphony of flavor and texture. Handcrafted with love and care, each batch of our cookies is made from the finest ingredients, including premium butter, rich chocolate, and aromatic spices, to create a mouthwatering experience that will transport you to cookie paradise. From classic chocolate chip cookies to indulgent double chocolate fudge, our cookie selection offers a variety of flavors to satisfy every craving and sweet tooth.
+
+    Sink your teeth into a warm, chewy cookie that is perfectly crispy on the edges and gooey in the center, delivering a melt-in-your-mouth sensation with every bite. Whether you enjoy them with a glass of cold milk, a cup of hot coffee, or simply on their own, our artisanal cookies are a delightful treat that brings joy to any occasion. With a range of flavors, textures, and sizes to choose from, our cookies make the perfect gift for loved ones, a sweet indulgence for yourself, or a charming addition to any gathering. Experience the magic of our artisanal cookies and let the aroma of freshly baked goodness fill your home with warmth and happiness.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "3.99";
+    schema:priceCurrency "EUR"
+  ].
+
+:P004
+  a schema:Product;
+  schema:productId "CC0405D2022052512348";
+  schema:name "🧼 CleanCare Hand Wash";
+  schema:description '''
+    Gentle hand wash with aloe vera extract, 500ml.
+
+    Elevate your hand hygiene routine with our luxurious and nourishing hand wash, designed to pamper your skin while effectively cleansing and protecting against germs. Infused with botanical extracts, moisturizing oils, and gentle cleansing agents, our hand wash provides a spa-like experience every time you lather up. The rich, creamy lather envelops your hands in a cocoon of softness, leaving them feeling refreshed, hydrated, and delicately scented with a hint of natural fragrance.
+
+    Formulated with care for both your skin and the environment, our hand wash is free from harsh chemicals, parabens, and sulfates, making it suitable for all skin types, including sensitive skin. Whether you're washing your hands after a long day or simply indulging in a moment of self-care, our hand wash is a luxurious addition to your daily routine. Transform the simple act of hand washing into a sensory experience that nourishes your skin and uplifts your spirits with our premium hand wash that combines cleanliness with indulgence.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "4.49";
+    schema:priceCurrency "EUR"
+  ].
+
+:P005
+  a schema:Product;
+  schema:productId "QM0504E2022053012349";
+  schema:name "🍜 QuickMeal Instant Noodles";
+  schema:description '''
+    Spicy chicken flavor instant noodles, pack of 5.
+
+    Experience the ultimate convenience and deliciousness with our premium instant noodles, the perfect solution for a quick and satisfying meal on the go. Made with high-quality ingredients and authentic flavors, our instant noodles are a culinary delight that will transport your taste buds to the bustling streets of Asia. From savory miso ramen to spicy tom yum, our noodle selection offers a variety of mouthwatering options to suit every palate and craving.
+
+    Simply add hot water and watch as our instant noodles transform into a steaming bowl of comfort and flavor in minutes. Whether you're craving a comforting bowl of noodles on a chilly day or need a quick and easy meal option, our instant noodles are a versatile and delicious choice. With the perfect balance of noodles, seasonings, and toppings, our instant noodles are a convenient and satisfying meal solution that will leave you feeling full and satisfied. Elevate your mealtime experience with our premium instant noodles and enjoy a taste of authentic Asian cuisine in the comfort of your own home.
+  '''@en;
+  schema:offers [
+    a schema:Offer;
+    schema:price "1.99";
+    schema:priceCurrency "EUR"
+  ].
+
+
